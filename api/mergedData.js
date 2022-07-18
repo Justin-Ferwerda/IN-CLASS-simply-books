@@ -29,4 +29,14 @@ const deleteAuthorBooks = (authorId) => new Promise((resolve, reject) => {
   }).catch((error) => reject(error));
 });
 
-export { viewBookDetails, viewAuthorDetails, deleteAuthorBooks };
+const getAuthorsBooks = (authorFirebaseKey) => new Promise((resolve, reject) => {
+  getSingleAuthor(authorFirebaseKey)
+    .then((authorObject) => {
+      getAuthorBooks(authorObject.firebaseKey)
+        .then((bookObject) => {
+          resolve({ bookObject, ...authorObject });
+        });
+    }).catch((error) => reject(error));
+});
+
+export { viewBookDetails, viewAuthorDetails, deleteAuthorBooks, getAuthorsBooks };

@@ -1,14 +1,28 @@
 /* eslint-disable @next/next/no-img-element */
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Card, Button } from 'react-bootstrap';
+import { deleteAuthorBooks } from '../api/mergedData';
 
-export default function AuthorCard({ authorObj }) {
+export default function AuthorCard({ authorObj, onUpdate }) {
+  const deleteThisAuthor = () => {
+    if (window.confirm(`Delete ${authorObj}?`)) {
+      deleteAuthorBooks(authorObj.firebaseKey).then(() => onUpdate());
+    }
+  };
+
   return (
     <>
-      <div>{ authorObj.email }</div>
-      <div>First Name: {authorObj.first_name}</div>
-      <div>Last Name: {authorObj.last_name}</div>
-      <div>Favorite: {authorObj.favorite}</div>
+      <Card style={{ width: '18rem' }}>
+        <Card.Body>
+          <Card.Title>{authorObj.first_name} {authorObj.last_name}</Card.Title>
+          <Card.Subtitle className="mb-2 text-muted">{ authorObj.email }</Card.Subtitle>
+          <Card.Subtitle className="mb-2 text-muted">{ authorObj.favorite ? 'Favorite' : '' }</Card.Subtitle>
+          <Button variant="danger" onClick={deleteThisAuthor} className="m-2">
+            DELETE
+          </Button>
+        </Card.Body>
+      </Card>
     </>
   );
 }
@@ -21,4 +35,5 @@ AuthorCard.propTypes = {
     favorite: PropTypes.bool,
     firebaseKey: PropTypes.string,
   }).isRequired,
+  onUpdate: PropTypes.func.isRequired,
 };

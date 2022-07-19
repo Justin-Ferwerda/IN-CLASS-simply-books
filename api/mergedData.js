@@ -39,4 +39,6 @@ const getAuthorsBooks = (authorFirebaseKey) => new Promise((resolve, reject) => 
     }).catch((error) => reject(error));
 });
 
-export { viewBookDetails, viewAuthorDetails, deleteAuthorBooks, getAuthorsBooks };
+export {
+  viewBookDetails, viewAuthorDetails, deleteAuthorBooks, getAuthorsBooks,
+};

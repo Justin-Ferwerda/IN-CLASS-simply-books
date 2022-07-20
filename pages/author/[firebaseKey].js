@@ -13,13 +13,17 @@ export default function ViewAuthor() {
   useEffect(() => {
     viewAuthorDetails(firebaseKey)
       .then(setAuthorDetails);
-    console.warn(authorDetails);
-  }, [authorDetails, firebaseKey]);
+  }, [firebaseKey]);
 
   return (
     <>
-      <AuthorCard authorObj={authorDetails} />
-      <BookCard bookObj={authorDetails.books} />
+      <AuthorCard key={firebaseKey} authorObj={authorDetails} onUpdate={() => null} />
+      <div className="d-flex flex-wrap">
+        {authorDetails.books?.map((book) => (
+          <BookCard key={book.firebaseKey} bookObj={book} onUpdate={() => null} />
+        ))}
+      </div>
+
     </>
   );
 }

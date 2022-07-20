@@ -35,7 +35,7 @@ function AuthorForm({ obj }) {
     e.preventDefault();
     if (obj.firebaseKey) {
       updateAuthor(formInput)
-        .then(() => router.push('/authors'));
+        .then(() => router.push(`/author/${obj.firebaseKey}`));
     } else {
       const payload = { ...formInput, uid: user.uid };
       createAuthor(payload).then(() => {

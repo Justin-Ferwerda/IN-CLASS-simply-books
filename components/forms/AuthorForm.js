@@ -48,7 +48,6 @@ function AuthorForm({ obj }) {
     <Form onSubmit={handleSubmit}>
       <h2 className="text-white mt-5">{obj.firebaseKey ? 'Update' : 'Create'} Author</h2>
 
-      {/* TITLE INPUT  */}
       <FloatingLabel controlId="floatingInput1" label="First Name" className="mb-3">
         <Form.Control
           type="text"
@@ -60,7 +59,6 @@ function AuthorForm({ obj }) {
         />
       </FloatingLabel>
 
-      {/* IMAGE INPUT  */}
       <FloatingLabel controlId="floatingInput2" label="Last Name" className="mb-3">
         <Form.Control
           type="text"
@@ -72,7 +70,6 @@ function AuthorForm({ obj }) {
         />
       </FloatingLabel>
 
-      {/* PRICE INPUT  */}
       <FloatingLabel controlId="floatingInput3" label="Email" className="mb-3">
         <Form.Control
           type="email"
@@ -84,7 +81,6 @@ function AuthorForm({ obj }) {
         />
       </FloatingLabel>
 
-      {/* A WAY TO HANDLE UPDATES FOR TOGGLES, RADIOS, ETC  */}
       <Form.Check
         className="text-white mb-3"
         type="switch"
@@ -100,7 +96,6 @@ function AuthorForm({ obj }) {
         }}
       />
 
-      {/* SUBMIT BUTTON  */}
       <Button type="submit">{obj.firebaseKey ? 'Update' : 'Create'} Author</Button>
     </Form>
   );

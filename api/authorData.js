@@ -22,9 +22,7 @@ const createAuthor = (authorObj) => new Promise((resolve, reject) => {
     .then((response) => {
       const payload = { firebaseKey: response.data.name };
       axios.patch(`${dbUrl}/authors/${response.data.name}.json`, payload)
-        .then(() => {
-          getAuthors(authorObj.uid).then(resolve);
-        });
+        .then(resolve);
     }).catch(reject);
 });
 

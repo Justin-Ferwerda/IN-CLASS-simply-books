@@ -6,14 +6,14 @@ import { deleteAuthorBooks } from '../api/mergedData';
 
 export default function AuthorCard({ authorObj, onUpdate }) {
   const deleteThisAuthor = () => {
-    if (window.confirm(`Delete ${authorObj}?`)) {
+    if (window.confirm(`Delete ${authorObj.first_name} ${authorObj.last_name}?`)) {
       deleteAuthorBooks(authorObj.firebaseKey).then(() => onUpdate());
     }
   };
 
   return (
     <>
-      <Card style={{ width: '18rem' }}>
+      <Card style={{ width: '18rem', margin: '10px' }}>
         <Card.Body>
           <Card.Title>{authorObj.first_name} {authorObj.last_name}</Card.Title>
           <Card.Subtitle className="mb-2 text-muted">{ authorObj.email }</Card.Subtitle>
